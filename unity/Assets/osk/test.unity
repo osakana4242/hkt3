@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311912, g: 0.3807398, b: 0.3587271, a: 1}
+  m_IndirectSpecularColor: {r: 0.44824815, g: 0.49827522, b: 0.57558227, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -535,7 +535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &685566360
 Light:
   m_ObjectHideFlags: 0
@@ -611,7 +611,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 789083505}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.4376387, y: 0, z: 0}
+  m_LocalPosition: {x: -4, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 100621462}
@@ -719,7 +719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &924080462
 Light:
   m_ObjectHideFlags: 0
@@ -898,8 +898,8 @@ Camera:
   m_GameObject: {fileID: 1270937692}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.2162089, g: 0.398059, b: 0.6838235, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -933,7 +933,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1270937692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6, y: 4, z: -580}
+  m_LocalPosition: {x: 0, y: 4, z: -580}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1846927093}
@@ -948,7 +948,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4722734517652512, guid: 2c7733e4fa53c4a4d8ad39c5ebf67396, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4722734517652512, guid: 2c7733e4fa53c4a4d8ad39c5ebf67396, type: 2}
       propertyPath: m_LocalPosition.y
@@ -956,7 +956,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4722734517652512, guid: 2c7733e4fa53c4a4d8ad39c5ebf67396, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4722734517652512, guid: 2c7733e4fa53c4a4d8ad39c5ebf67396, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1200,7 +1200,7 @@ Transform:
   m_GameObject: {fileID: 1759840141}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 32, y: 1, z: 2}
+  m_LocalScale: {x: 10, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 1846927093}
   m_RootOrder: 8
@@ -1304,7 +1304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1839315117
 Light:
   m_ObjectHideFlags: 0
@@ -1314,7 +1314,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.85993546, b: 0.47794116, a: 1}
+  m_Color: {r: 1, g: 0.87769014, b: 0.5441177, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1347,13 +1347,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1839315116}
-  m_LocalRotation: {x: 0.73994213, y: 0.16636571, z: -0.19826692, w: 0.6208852}
+  m_LocalRotation: {x: 0.35355338, y: -0.35355338, z: 0.1464466, w: 0.8535535}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1846927093}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 100, y: 30, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: -45, z: 0}
 --- !u!1 &1846927091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,7 +1385,14 @@ MonoBehaviour:
   data:
     cannon: {fileID: 0}
     canvas: {fileID: 0}
-    machine: {fileID: 0}
+    player:
+      power: 0
+      score: 0
+      dir: {x: 0, y: 0}
+      earth: 0
+      gameObject: {fileID: 0}
+      startPosition: {x: 0, y: 0, z: 0}
+      isDead: 0
     stage: {fileID: 0}
 --- !u!4 &1846927093
 Transform:

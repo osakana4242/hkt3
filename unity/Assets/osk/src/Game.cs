@@ -60,6 +60,7 @@ namespace Osk42 {
 			data.progress = new Progress();
 			data.player = new Player();
 			data.player.gameObject = transform.Find("player").gameObject;
+			data.player.startPosition = data.player.gameObject.transform.localPosition;
 			data.player.gameObject.OnCollisionStayAsObservable().
 			Do(_col => {
 				if (_col.gameObject.GetComponent<PaperComponent>() != null) return;
@@ -129,18 +130,30 @@ namespace Osk42 {
 					rb.rotation = nextRot;
 				}
 			}
+			{
+				var rect = new Rect(-10f, -10f, 20f, 30f);
+				var pos = (Vector2)player.localPosition;
+				if (!rect.Contains(pos)) {
+					data.player.isDead = true;
+				}
+			}
 		}
 
 		// Update is called once per frame
 		void Update() {
 			ScreenData.validateSize(ScreenData.instance);
 			switch (data.progress.stateId) {
-				case StateId.Init:
-					data.progress.elapsedTime = 0f;
-					data.player.power = 0f;
-					data.player.rotScore = 0f;
-					data.progress.stateId = StateId.Ready;
-					break;
+				case StateId.Init: {
+						data.progress.elapsedTime = 0f;
+						data.player.power = 0f;
+						data.player.score = 0;
+						var rb = data.player.gameObject.GetComponent<Rigidbody>();
+						rb.velocity = Vector3.zero;
+						data.player.gameObject.transform.localPosition = data.player.startPosition;
+						data.progress.stateId = StateId.Ready;
+						data.player.isDead = false;
+						break;
+					}
 				case StateId.Ready:
 					if (!Input.GetKey(KeyCode.Z)) {
 						var rot = Quaternion.Euler(
@@ -155,6 +168,7 @@ namespace Osk42 {
 						// );
 						var cannonHead = data.cannon.transform.Find("head_01/head_02");
 						var cannonPos = cannonHead.position;
+						cannonPos.z = 0f;
 						var cannonRot = cannonHead.rotation;
 						var noise = new Vector3(
 							Random.Range(-1f, 1f) * 0.2f,
@@ -169,6 +183,7 @@ namespace Osk42 {
 						if (assets.config.paperCapacity <= papers_.Count) {
 							paper = papers_[0];
 							paper.gameObject.SetActive(true);
+							paper.rigidbody.velocity = Vector3.zero;
 							papers_.RemoveAt(0);
 							papers_.Add(paper);
 						} else {
@@ -235,6 +250,11 @@ namespace Osk42 {
 						// 	TakeUntilDestroy(gameObject).
 						// 	Subscribe();
 					}
+					data.progress.elapsedTime += Time.deltaTime;
+					if (data.progress.timeLimit <= data.progress.elapsedTime || data.player.isDead) {
+						data.progress.elapsedTime = data.progress.timeLimit;
+						data.progress.stateId = StateId.Result1;
+					}
 					break;
 				case StateId.Main: {
 						break;
@@ -250,7 +270,7 @@ namespace Osk42 {
 						Subscribe();
 					break;
 				case StateId.Result2:
-					if (Input.GetMouseButtonDown(0)) {
+					if (Input.GetKey(KeyCode.Z)) {
 						data.progress.stateId = StateId.Init;
 					}
 					break;
@@ -300,10 +320,11 @@ namespace Osk42 {
 		public class Player {
 			public float power = 0;
 			public int score = 0;
-			public float rotScore = 0f;
 			public Vector2 dir;
 			public bool earth;
 			public GameObject gameObject;
+			public Vector3 startPosition;
+			public bool isDead;
 		}
 
 		public enum ObjectType {
