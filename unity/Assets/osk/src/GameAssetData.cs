@@ -25,6 +25,10 @@ namespace Osk42 {
 			public int paperCapacity = 512;
 			public float walkSpeed = 10f;
 			public float jumpPower = 30f;
+			public int jumpCount = 2;
+			public Rect activeRect = new Rect(-10f, -10f, 20f, 30f);
+			public float chainTime = 0.1f;
+			public int chainMax = 8;
 		}
 #if UNITY_EDITOR
 		[UnityEditor.MenuItem("UNKO/FUGA")]
